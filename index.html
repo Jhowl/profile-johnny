@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Johnny Costa | Software Developer & Systems Consultant</title>
+  <meta name="description"
+    content="Johnny Costa — Software Developer & Technical Systems Consultant specializing in backend engineering, automation, API integrations, and local/offline AI: local agents, on-premise models, and model setup & maintenance." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="/src/main.js"></script>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body>
+  <!-- Navigation / Monogram -->
+  <nav class="container navbar">
+    <div class="monogram">JC</div>
+    <div class="nav-links">
+      <a href="#portfolio">Portfolio</a>
+      <a href="#skills">Skills</a>
+      <a href="#ai">AI</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="container hero-section flex-center">
+      <div class="hero-content">
+        <h1 class="hero-title">Johnny Costa</h1>
+        <div class="hero-subtitle">Software Developer & Systems Consultant</div>
+        <div class="hero-divider"></div>
+        <div class="hero-buttons">
+          <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
+          <a href="mailto:contact@johnnycosta.dev" class="btn btn-secondary">Get in Touch</a>
+          <a href="https://calendly.com/costa-johnny/30min" target="_blank" class="btn btn-text">Book a Call</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="section-divider"></div>
+      <div class="projects-grid">
+        <div class="card project-card animate-on-scroll">
+          <div class="project-image-placeholder"></div>
+          <div class="project-content">
+            <h3>DotaData</h3>
+            <p>Data analytics platform for Dota 2 — Next.js frontend backed by an Express + TypeScript API with
+              Redis caching.</p>
+            <div class="tech-tags">
+              <span>Next.js</span><span>TypeScript</span><span>Redis</span>
+            </div>
+            <a href="https://dotadata.org/" target="_blank" class="btn btn-secondary btn-sm">View Project</a>
+          </div>
+        </div>
+        <div class="card project-card animate-on-scroll">
+          <div class="project-image-placeholder"></div>
+          <div class="project-content">
+            <h3>BH Cooperative</h3>
+            <p>Platform where customers request services and Brazilians in Ireland join a workers' cooperative —
+              includes a manager admin dashboard.</p>
+            <div class="tech-tags">
+              <span>Next.js</span><span>Supabase</span><span>TypeScript</span>
+            </div>
+            <a href="http://bhcooperative.com/" target="_blank" class="btn btn-secondary btn-sm">View Project</a>
+          </div>
+        </div>
+        <div class="card project-card animate-on-scroll">
+          <div class="project-image-placeholder"></div>
+          <div class="project-content">
+            <h3>Fuerza Studio Projects</h3>
+            <p>Various AI and automation solutions.</p>
+            <div class="tech-tags">
+              <span>AI</span><span>Automation</span>
+            </div>
+            <a href="https://fuerzastudio.com/" target="_blank" class="btn btn-secondary btn-sm">View Project</a>
+          </div>
+        </div>
+        <div class="card project-card animate-on-scroll">
+          <div class="project-image-placeholder"></div>
+          <div class="project-content">
+            <h3>SMS Campaign API</h3>
+            <p>Backend service to create SMS campaigns, manage contacts, simulate delivery, and view campaign stats —
+              with a React UI for testing routes.</p>
+            <div class="tech-tags">
+              <span>TypeScript</span><span>Express</span><span>SQLite</span>
+            </div>
+          </div>
+        </div>
+        <div class="card project-card animate-on-scroll">
+          <div class="project-image-placeholder"></div>
+          <div class="project-content">
+            <h3>Smart Home Purchase Tracker</h3>
+            <p>Dockerized purchase tracker with unit-price comparison — Python backend, lightweight web UI, and
+              persistent local data.</p>
+            <div class="tech-tags">
+              <span>Python</span><span>FastAPI</span><span>Docker</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Client Work Section -->
+    <section id="clients" class="section container">
+      <h2 class="section-title">Client Work</h2>
+      <div class="section-divider"></div>
+      <div class="projects-grid">
+        <div class="card client-card animate-on-scroll">
+          <h3>Veritone</h3>
+          <p>Contract development of backend services for the AI platform company — Golang microservices with GraphQL
+            APIs, packaged with Docker.</p>
+          <div class="tech-tags">
+            <span>Golang</span><span>GraphQL</span><span>Docker</span>
+          </div>
+          <a href="https://www.veritone.com/" target="_blank" class="btn btn-secondary btn-sm">Visit Site</a>
+        </div>
+        <div class="card client-card animate-on-scroll">
+          <h3>Ready Set</h3>
+          <p>Application development for the performance creative platform — Node.js services with MongoDB and
+            GraphQL.</p>
+          <div class="tech-tags">
+            <span>Node.js</span><span>MongoDB</span><span>GraphQL</span>
+          </div>
+          <a href="https://www.readyset.co/" target="_blank" class="btn btn-secondary btn-sm">Visit Site</a>
+        </div>
+        <div class="card client-card animate-on-scroll">
+          <h3>Warrior Made</h3>
+          <p>WordPress development for the fitness brand — custom backend logic and site optimization.</p>
+          <div class="tech-tags">
+            <span>WordPress</span>
+          </div>
+          <a href="https://www.warriormade.com/" target="_blank" class="btn btn-secondary btn-sm">Visit Site</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section container">
+      <h2 class="section-title">About Me</h2>
+      <div class="section-divider"></div>
+      <div class="about-content">
+        <p class="text-large">
+          Johnny Costa is a <span class="text-orange">Software Developer & Technical Systems Consultant</span>
+          specializing in backend engineering, automation, API integrations, WordPress technical development, and
+          system optimization.
+        </p>
+        <p>
+          I evolved from a freelancer to a consultant, working on high-impact projects in both Brazil and the US. My
+          journey is defined by a growth mindset and constant evolution as a technical professional, always seeking the
+          most efficient and scalable solutions for complex problems.
+        </p>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section container">
+      <h2 class="section-title">Core Skills & Stack</h2>
+      <div class="section-divider"></div>
+      <div class="skills-grid">
+        <div class="card skill-card animate-on-scroll">
+          <h3>Backend & Languages</h3>
+          <ul class="skill-list">
+            <li>Node.js & TypeScript</li>
+            <li>Python & PHP</li>
+            <li>Golang & GraphQL</li>
+            <li>MySQL, MongoDB & SQLite</li>
+            <li>Redis Caching</li>
+          </ul>
+        </div>
+        <div class="card skill-card animate-on-scroll">
+          <h3>Automation & Integrations</h3>
+          <ul class="skill-list">
+            <li>n8n Automation</li>
+            <li>AI Integrations</li>
+            <li>API Integrations</li>
+            <li>WooCommerce Funnels</li>
+          </ul>
+        </div>
+        <div class="card skill-card animate-on-scroll">
+          <h3>Frontend & Frameworks</h3>
+          <ul class="skill-list">
+            <li>Next.js & React</li>
+            <li>Express & FastAPI</li>
+            <li>Supabase</li>
+          </ul>
+        </div>
+        <div class="card skill-card animate-on-scroll">
+          <h3>Infrastructure & DevOps</h3>
+          <ul class="skill-list">
+            <li>Docker & Nginx</li>
+            <li>Linux Server Management</li>
+            <li>Architecture Planning</li>
+          </ul>
+        </div>
+        <div class="card skill-card animate-on-scroll">
+          <h3>Education & Certifications</h3>
+          <ul class="skill-list">
+            <li>Computer Science Degree</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section container">
+      <h2 class="section-title">Experience & Work History</h2>
+      <div class="section-divider"></div>
+      <div class="experience-timeline">
+        <div class="card experience-card animate-on-scroll">
+          <div class="exp-header">
+            <h3>Freelancer Work</h3>
+            <span class="exp-date">Various Projects</span>
+          </div>
+          <p>DotaData.org, BHCooperative.com, DotaShowil.com</p>
+        </div>
+        <div class="card experience-card animate-on-scroll">
+          <div class="exp-header">
+            <h3>Technical Consultant</h3>
+            <span class="exp-date">johnnycosta.dev</span>
+          </div>
+          <p>WordPress backend, plugins, headless APIs, Redis caching, WooCommerce, Linux server management,
+            architecture planning.</p>
+        </div>
+        <div class="card experience-card animate-on-scroll">
+          <div class="exp-header">
+            <h3>Fuerza Studio</h3>
+            <span class="exp-date">Developer</span>
+          </div>
+          <p>Node.js applications, MongoDB development, WordPress systems, AI-integrated solutions.</p>
+        </div>
+        <div class="card experience-card animate-on-scroll">
+          <div class="exp-header">
+            <h3>Veritone</h3>
+            <span class="exp-date">Contractor</span>
+          </div>
+          <p>Golang, GraphQL, Docker services project.</p>
+        </div>
+        <div class="card experience-card animate-on-scroll">
+          <div class="exp-header">
+            <h3>Other Projects & Clients</h3>
+            <span class="exp-date">Global</span>
+          </div>
+          <p>Music Matters, Warrior Made, Ready Set, Disney (indirect), Somos Educação, iMasters, E-commerce Brasil.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section container">
+      <h2 class="section-title">What I Do</h2>
+      <div class="section-divider"></div>
+      <div class="services-grid">
+        <div class="card service-card animate-on-scroll">
+          <h3>Technical Consulting</h3>
+          <p>System diagnosis, architecture planning, and optimization for scalable growth.</p>
+        </div>
+        <div class="card service-card animate-on-scroll">
+          <h3>Backend Development</h3>
+          <p>Robust APIs, Node.js, PHP, and database engineering for high-performance apps.</p>
+        </div>
+        <div class="card service-card animate-on-scroll">
+          <h3>WordPress Expertise</h3>
+          <p>Custom themes, backend logic, plugins, and WooCommerce funnel optimization.</p>
+        </div>
+        <div class="card service-card animate-on-scroll">
+          <h3>Automation & AI</h3>
+          <p>n8n workflows, AI-powered connectors, and seamless integration systems.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Services Section -->
+    <section id="ai" class="section container">
+      <h2 class="section-title">AI &amp; Local Models</h2>
+      <div class="section-divider"></div>
+      <p class="ai-intro text-large">Private, on-premise AI — run powerful models on your own hardware. No data leaves
+        your network, no per-token bills, full control.</p>
+      <div class="services-grid">
+        <div class="card service-card animate-on-scroll">
+          <h3>Local AI Agents</h3>
+          <p>Custom autonomous agents that run on your infrastructure — automating workflows, research, and tasks
+            without sending data to third parties.</p>
+        </div>
+        <div class="card service-card animate-on-scroll">
+          <h3>Offline AI Solutions</h3>
+          <p>Air-gapped, fully offline AI systems for sensitive environments — chat assistants, document analysis, and
+            RAG that work with zero internet access.</p>
+        </div>
+        <div class="card service-card animate-on-scroll">
+          <h3>Local Model Setup</h3>
+          <p>Deployment of open models (Llama, Mistral, and more) with Ollama, llama.cpp, or vLLM — tuned to your GPU
+            and use case for the best speed-to-quality balance.</p>
+        </div>
+        <div class="card service-card animate-on-scroll">
+          <h3>Maintenance &amp; Support</h3>
+          <p>Ongoing model updates, monitoring, performance tuning, and hardware guidance to keep your local AI stack
+            reliable and current.</p>
+        </div>
+      </div>
+      <div class="ai-cta">
+        <a href="#contact" class="btn btn-primary">Discuss Your AI Project</a>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section container">
+      <h2 class="section-title">Let's Work Together</h2>
+      <div class="section-divider"></div>
+      <div class="contact-container">
+        <div class="contact-form-wrapper">
+          <!-- TODO: set data-endpoint to the backend URL once it's created -->
+          <form id="contact-form" class="contact-form" data-endpoint="">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your Name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required placeholder="How can I help you?" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+            <div id="form-status" class="form-status" role="status"></div>
+          </form>
+        </div>
+        <div class="contact-info">
+          <p class="contact-intro">Ready to elevate your project? Let's discuss how I can help you achieve your
+            technical goals.</p>
+          <a href="mailto:contact@johnnycosta.dev" class="contact-email-card card">
+            <span class="label">Email me at</span>
+            <span class="contact-email">contact@johnnycosta.dev</span>
+          </a>
+          <div class="contact-details">
+            <div class="contact-item">
+              <span class="label">Website</span>
+              <a href="https://johnnycosta.dev">johnnycosta.dev</a>
+            </div>
+            <div class="contact-item">
+              <span class="label">Socials</span>
+              <div class="social-links-contact">
+                <a href="https://github.com/Jhowl/" target="_blank" aria-label="GitHub" class="social-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                    </path>
+                  </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/jhonatan1/" target="_blank" aria-label="LinkedIn"
+                  class="social-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <a href="https://calendly.com/costa-johnny/30min" target="_blank" class="btn btn-primary"
+            style="margin-top: 2rem;">Schedule a Call</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="monogram">JC</div>
+      <div class="footer-links">
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+        <a href="mailto:contact@johnnycosta.dev">Email</a>
+        <a href="https://github.com/Jhowl/" target="_blank" aria-label="GitHub" class="social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+            </path>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/jhonatan1/" target="_blank" aria-label="LinkedIn" class="social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+      </div>
+      <div class="copyright">
+        &copy; <span id="current-year">2026</span> Johnny Costa. All rights reserved.
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
