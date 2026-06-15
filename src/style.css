@@ -705,6 +705,12 @@ ul {
   z-index: 1000;
 }
 
+/* The class sets display:flex, which would override the [hidden] attribute's
+   UA display:none — this attribute selector restores hide-on-hidden. */
+.chat-panel[hidden] {
+  display: none;
+}
+
 .chat-header {
   display: flex;
   align-items: center;
