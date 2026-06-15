@@ -54,7 +54,20 @@ Chat data persists in `./data/chat.db` (mounted volume).
 - **Soft gate:** after `SOFT_LIMIT` (default 8) messages, the widget asks for name + email so
   Johnny can follow up — chatting still continues. Leads are saved.
 - **Limits:** per-IP rate limiting + max message length guard abuse of the local GPU.
-- The site contact form posts to the same backend (`/api/lead`).
+- The site contact form posts to `/api/contact` (chat leads use `/api/lead`); both save to the
+  leads table and trigger a Telegram notification.
+
+## Contact form & Telegram notifications
+
+The contact form (`POST /api/contact`) and chat lead form (`POST /api/lead`) both store the
+submission and send a **Telegram message** so Johnny is notified instantly. Notifications are
+optional — if the token/chat id are unset, submissions are still saved.
+
+Setup:
+1. Create a bot with [@BotFather](https://t.me/BotFather) → copy the **bot token**.
+2. Message [@userinfobot](https://t.me/userinfobot) (or your bot, then check
+   `https://api.telegram.org/bot<token>/getUpdates`) to get your numeric **chat id**.
+3. Set `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` in `.env`, then `docker compose up -d`.
 
 ### Configuration (env — see `.env.example`)
 

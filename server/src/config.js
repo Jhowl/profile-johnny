@@ -16,4 +16,8 @@ export const config = {
   rateWindowMs: num(process.env.RATE_LIMIT_WINDOW_MS, 10 * 60 * 1000),
   rateMax: num(process.env.RATE_LIMIT_MAX, 40),
   dbPath: process.env.DB_PATH || '/app/data/chat.db',
+  telegram: {
+    botToken: process.env.TELEGRAM_BOT_TOKEN || '',
+    chatId: process.env.TELEGRAM_CHAT_ID || '',
+  },
 };

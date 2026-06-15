@@ -20,6 +20,8 @@ services:
       - HISTORY_TURNS=${HISTORY_TURNS:-12}
       - RATE_LIMIT_WINDOW_MS=${RATE_LIMIT_WINDOW_MS:-600000}
       - RATE_LIMIT_MAX=${RATE_LIMIT_MAX:-40}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID:-}
       - PORT=3000
       - DB_PATH=/app/data/chat.db
     volumes:

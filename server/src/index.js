@@ -6,6 +6,7 @@ import { config } from './config.js';
 import { dbApi } from './db.js';
 import { streamChat } from './ollama.js';
 import { SYSTEM_PROMPT } from './prompt.js';
+import { notifyLead } from './telegram.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -82,7 +83,7 @@ app.post('/api/chat', limiter, async (req, res) => {
   res.end();
 });
 
-// ---- Lead capture (also used by the site contact form) ----
+// ---- Lead capture (chat widget soft gate) ----
 app.post('/api/lead', limiter, (req, res) => {
   const name = clean(req.body?.name, 120);
   const email = clean(req.body?.email, 200);
@@ -92,7 +93,25 @@ app.post('/api/lead', limiter, (req, res) => {
 
   if (!isEmail(email)) return res.status(400).json({ error: 'A valid email is required.' });
 
-  dbApi.addLead({ sessionId, name, email, message, source });
+  const lead = { sessionId, name, email, message, source };
+  dbApi.addLead(lead);
+  notifyLead(lead); // fire-and-forget Telegram notification
+  res.json({ ok: true });
+});
+
+// ---- Contact form ----
+app.post('/api/contact', limiter, (req, res) => {
+  const name = clean(req.body?.name, 120);
+  const email = clean(req.body?.email, 200);
+  const message = clean(req.body?.message, 2000);
+
+  if (!name) return res.status(400).json({ error: 'Name is required.' });
+  if (!isEmail(email)) return res.status(400).json({ error: 'A valid email is required.' });
+  if (!message) return res.status(400).json({ error: 'Message is required.' });
+
+  const lead = { sessionId: null, name, email, message, source: 'contact-form' };
+  dbApi.addLead(lead);
+  notifyLead(lead); // fire-and-forget Telegram notification
   res.json({ ok: true });
 });
 
