@@ -1,4 +1,7 @@
 node_modules
+server/node_modules
 dist
+data
+.env
 .firecrawl
 .DS_Store

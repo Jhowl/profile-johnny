@@ -1,7 +1,27 @@
 services:
   web:
     build: .
-    container_name: johnnycosta-dev
+    container_name: johnnycosta-web
     ports:
       - "8080:80"
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  api:
+    build: ./server
+    container_name: johnnycosta-api
+    environment:
+      - OLLAMA_URL=${OLLAMA_URL:-http://192.168.1.182:11434}
+      - OLLAMA_MODEL=${OLLAMA_MODEL:-gemma4:12b}
+      - ADMIN_TOKEN=${ADMIN_TOKEN:-change-me}
+      - SOFT_LIMIT=${SOFT_LIMIT:-8}
+      - MAX_MSG_LEN=${MAX_MSG_LEN:-2000}
+      - HISTORY_TURNS=${HISTORY_TURNS:-12}
+      - RATE_LIMIT_WINDOW_MS=${RATE_LIMIT_WINDOW_MS:-600000}
+      - RATE_LIMIT_MAX=${RATE_LIMIT_MAX:-40}
+      - PORT=3000
+      - DB_PATH=/app/data/chat.db
+    volumes:
+      - ./data:/app/data
     restart: unless-stopped

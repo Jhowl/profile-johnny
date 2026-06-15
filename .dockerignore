@@ -1,6 +1,9 @@
 node_modules
 dist
+data
 .git
+.env
 .firecrawl
 README.md
 docker-compose.yml
+server

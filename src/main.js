@@ -1,5 +1,10 @@
+import { initChat } from './chat.js';
+
 // Footer year
 document.getElementById('current-year').textContent = new Date().getFullYear();
+
+// AI chat widget
+initChat();
 
 // Fade-in sections/cards as they enter the viewport
 const observer = new IntersectionObserver(
