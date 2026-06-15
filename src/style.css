@@ -883,6 +883,17 @@ ul {
   border-bottom-left-radius: 4px;
 }
 
+/* Inline contact prompt / confirmation note */
+.chat-msg-note {
+  align-self: stretch;
+  max-width: 100%;
+  text-align: center;
+  background: #ff7a1a1a;
+  border: 1px dashed var(--accent-orange);
+  color: var(--text-secondary);
+  font-size: .82rem;
+}
+
 .chat-typing {
   display: flex;
   gap: 4px;
@@ -904,63 +915,6 @@ ul {
 @keyframes chat-bounce {
   0%, 80%, 100% { opacity: .3; transform: translateY(0); }
   40% { opacity: 1; transform: translateY(-4px); }
-}
-
-.chat-lead {
-  border-top: 1px solid var(--border-color);
-  padding: .6rem .8rem;
-  display: flex;
-  flex-direction: column;
-  gap: .35rem;
-  background: #000;
-}
-
-.chat-lead-intro {
-  margin: 0;
-  font-size: .78rem;
-  color: var(--text-primary);
-}
-
-.chat-lead input {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  padding: .4rem .55rem;
-  color: var(--text-secondary);
-  font-family: var(--font-primary);
-  font-size: .82rem;
-}
-
-.chat-lead input:focus {
-  outline: none;
-  border-color: var(--accent-orange);
-}
-
-.chat-lead-send {
-  padding: .4rem;
-  font-size: .8rem;
-}
-
-.chat-lead-skip {
-  background: none;
-  border: none;
-  color: #888;
-  font-size: .73rem;
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.chat-lead-skip:hover {
-  color: var(--accent-orange);
-}
-
-.chat-lead-status {
-  font-size: .8rem;
-  color: var(--text-primary);
-}
-
-.chat-lead-status.error {
-  color: #f44336;
 }
 
 .chat-input {

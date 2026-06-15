@@ -45,14 +45,6 @@ export function initChat() {
         <button class="chat-close" id="chat-close" aria-label="Close chat">&times;</button>
       </div>
       <div class="chat-messages" id="chat-messages"></div>
-      <div class="chat-lead" id="chat-lead" hidden>
-        <p class="chat-lead-intro">Want Johnny to follow up? Leave your details:</p>
-        <input type="text" id="lead-name" placeholder="Your name" />
-        <input type="email" id="lead-email" placeholder="your@email.com" />
-        <button class="btn btn-primary chat-lead-send" id="lead-send">Send</button>
-        <button class="chat-lead-skip" id="lead-skip">Maybe later</button>
-        <div class="chat-lead-status" id="lead-status"></div>
-      </div>
       <form class="chat-input" id="chat-input">
         <input type="text" id="chat-text" placeholder="Ask about Johnny's services…" autocomplete="off" maxlength="2000" />
         <button type="submit" aria-label="Send" id="chat-send">
@@ -70,10 +62,11 @@ export function initChat() {
   const form = document.getElementById('chat-input');
   const textInput = document.getElementById('chat-text');
   const sendBtn = document.getElementById('chat-send');
-  const leadBox = document.getElementById('chat-lead');
   const cta = document.getElementById('chat-cta');
 
+  const EMAIL_RE = /[^\s@]+@[^\s@]+\.[^\s@]+/;
   let greeted = false;
+  let contactPromptShown = false;
 
   function hideCta(persist) {
     cta.hidden = true;
@@ -141,6 +134,13 @@ export function initChat() {
     sendBtn.disabled = true;
     textInput.value = '';
     addMessage('user', text);
+
+    // If the visitor typed contact details, capture them in the background.
+    if (!leadDone) {
+      const match = text.match(EMAIL_RE);
+      if (match) captureLead(match[0], text);
+    }
+
     const typing = showTyping();
 
     let bubble = null;
@@ -179,7 +179,10 @@ export function initChat() {
         }
       }
 
-      if (promptContact && !leadDone) showLeadForm();
+      if (promptContact && !leadDone && !contactPromptShown) {
+        contactPromptShown = true;
+        addMessage('note', "💬 Enjoying the chat? If you'd like Johnny to personally follow up, just type your email (or any contact details) here and I'll pass them along.");
+      }
     } catch (err) {
       if (typing.isConnected) typing.remove();
       if (bubble) {
@@ -195,40 +198,21 @@ export function initChat() {
   });
 
   // ---- Lead capture ----
-  function showLeadForm() {
-    leadBox.hidden = false;
-    messagesEl.scrollTop = messagesEl.scrollHeight;
-  }
-
-  document.getElementById('lead-skip').addEventListener('click', () => {
-    leadBox.hidden = true;
-  });
-
-  document.getElementById('lead-send').addEventListener('click', async () => {
-    const name = document.getElementById('lead-name').value.trim();
-    const email = document.getElementById('lead-email').value.trim();
-    const status = document.getElementById('lead-status');
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      status.textContent = 'Please enter a valid email.';
-      status.className = 'chat-lead-status error';
-      return;
-    }
-    status.textContent = 'Sending…';
-    status.className = 'chat-lead-status';
+  // Save contact details the visitor typed into the chat. Fire-and-forget so it
+  // never interrupts the conversation; a short note confirms it landed.
+  async function captureLead(email, note) {
+    leadDone = true; // optimistic — avoid double-capture on the next message
     try {
       const res = await fetch(`${API_BASE}/lead`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sessionId, name, email, source: 'chat' }),
+        body: JSON.stringify({ sessionId, email, message: note, source: 'chat' }),
       });
       if (!res.ok) throw new Error();
-      leadDone = true;
       localStorage.setItem(STORAGE_KEY + '_lead', '1');
-      leadBox.hidden = true;
-      addMessage('assistant', `Thanks${name ? ', ' + name : ''}! Johnny will reach out. Feel free to keep chatting.`);
+      addMessage('note', `✅ Got it — Johnny will follow up at ${email}.`);
     } catch {
-      status.textContent = 'Something went wrong. Email contact@johnnycosta.dev directly.';
-      status.className = 'chat-lead-status error';
+      leadDone = false; // allow a retry on a later message
     }
-  });
+  }
 }
