@@ -908,16 +908,16 @@ ul {
 
 .chat-lead {
   border-top: 1px solid var(--border-color);
-  padding: 1rem;
+  padding: .6rem .8rem;
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: .35rem;
   background: #000;
 }
 
 .chat-lead-intro {
   margin: 0;
-  font-size: .85rem;
+  font-size: .78rem;
   color: var(--text-primary);
 }
 
@@ -925,10 +925,10 @@ ul {
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: 4px;
-  padding: .6rem;
+  padding: .4rem .55rem;
   color: var(--text-secondary);
   font-family: var(--font-primary);
-  font-size: .9rem;
+  font-size: .82rem;
 }
 
 .chat-lead input:focus {
@@ -937,15 +937,15 @@ ul {
 }
 
 .chat-lead-send {
-  padding: .6rem;
-  font-size: .85rem;
+  padding: .4rem;
+  font-size: .8rem;
 }
 
 .chat-lead-skip {
   background: none;
   border: none;
   color: #888;
-  font-size: .8rem;
+  font-size: .73rem;
   cursor: pointer;
   text-decoration: underline;
 }
