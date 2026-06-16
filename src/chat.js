@@ -4,6 +4,66 @@
 const API_BASE = '/api';
 const STORAGE_KEY = 'jc_chat_session';
 
+const escapeHtml = (s) =>
+  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+// Inline formatting on an already-escaped string: code, bold, italic, links.
+function renderInline(s) {
+  s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
+  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/__([^_]+)__/g, '<strong>$1</strong>');
+  s = s.replace(/(^|[^*])\*(?!\s)([^*\n]+?)\*/g, '$1<em>$2</em>');
+  s = s.replace(
+    /\[([^\]]+)\]\((https?:\/\/[^\s)]+|mailto:[^\s)]+)\)/g,
+    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
+  );
+  return s;
+}
+
+// Minimal, XSS-safe Markdown -> HTML for chat replies. HTML is escaped first,
+// then only a whitelisted set of tags is produced. Handles bold/italic/code,
+// links, bullet/numbered lists, headings (as bold), and paragraphs.
+function renderMarkdown(md) {
+  const lines = escapeHtml(md).split('\n');
+  let html = '';
+  let list = null; // 'ul' | 'ol'
+  let inCode = false;
+  let code = '';
+  const closeList = () => { if (list) { html += `</${list}>`; list = null; } };
+
+  for (const line of lines) {
+    if (/^\s*```/.test(line)) {
+      if (inCode) { html += `<pre><code>${code}</code></pre>`; code = ''; inCode = false; }
+      else { closeList(); inCode = true; }
+      continue;
+    }
+    if (inCode) { code += line + '\n'; continue; }
+
+    const h = line.match(/^\s*#{1,4}\s+(.*)$/);
+    const ul = line.match(/^\s*[-*]\s+(.*)$/);
+    const ol = line.match(/^\s*\d+\.\s+(.*)$/);
+
+    if (h) {
+      closeList();
+      html += `<strong class="chat-h">${renderInline(h[1])}</strong>`;
+    } else if (ul) {
+      if (list !== 'ul') { closeList(); html += '<ul>'; list = 'ul'; }
+      html += `<li>${renderInline(ul[1])}</li>`;
+    } else if (ol) {
+      if (list !== 'ol') { closeList(); html += '<ol>'; list = 'ol'; }
+      html += `<li>${renderInline(ol[1])}</li>`;
+    } else if (line.trim() === '') {
+      closeList();
+    } else {
+      closeList();
+      html += `<p>${renderInline(line)}</p>`;
+    }
+  }
+  if (inCode) html += `<pre><code>${code}</code></pre>`;
+  closeList();
+  return html;
+}
+
 function getSessionId() {
   let id = localStorage.getItem(STORAGE_KEY);
   if (!id) {
@@ -169,7 +229,7 @@ export function initChat() {
         // The server appends a NUL + JSON metadata frame at the very end.
         const nul = acc.indexOf('\0');
         const visible = nul === -1 ? acc : acc.slice(0, nul);
-        bubble.textContent = visible;
+        bubble.innerHTML = renderMarkdown(visible);
         messagesEl.scrollTop = messagesEl.scrollHeight;
 
         if (nul !== -1) {

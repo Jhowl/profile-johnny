@@ -9,7 +9,13 @@ export async function streamChat(messages, onToken, signal) {
   const res = await fetch(`${config.ollamaUrl}/api/chat`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ model: config.ollamaModel, messages, stream: true }),
+    body: JSON.stringify({
+      model: config.ollamaModel,
+      messages,
+      stream: true,
+      keep_alive: config.ollamaKeepAlive,
+      options: { num_predict: config.ollamaNumPredict },
+    }),
     signal,
   });
 
